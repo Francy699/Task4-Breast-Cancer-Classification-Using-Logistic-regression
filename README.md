@@ -15,6 +15,10 @@ The task is to classify each tumor as either malignant or benign based on a set 
 
 Logistic Regression is a statistical method used for binary classification tasks. Unlike linear regression, which outputs continuous values, logistic regression predicts the probability that an observation belongs to one of the two classes. The output is a value between 0 and 1, which is interpreted as the probability of the observation being in the positive class (malignant tumor in this case).
 
+![Logistic Regression](https://github.com/user-attachments/assets/2b525589-1563-478c-a08c-772fc2e78236)
+
+
+
 The formula for logistic regression is:
 ```
 P(Y=1|X) = 1 / (1 + e^(-Z))
@@ -65,6 +69,9 @@ We define the features (X) and the target (y).
 X = df.drop("diagnosis", axis=1)
 y = df["diagnosis"]
 ```
+![Screenshot 2025-04-29 140324](https://github.com/user-attachments/assets/942f4904-a5e6-485b-acd3-d3da30c19a1b)
+
+
 
 ## 🔀 Train-Test Split
 
@@ -115,7 +122,7 @@ plt.ylabel("Actual")
 plt.title("Confusion Matrix")
 plt.show()
 ```
-
+![Screenshot 2025-04-29 140412](https://github.com/user-attachments/assets/c5d9a86c-0997-41ca-a1f3-e332416d4641)
 ## 📄 Classification Report
 
 The classification report, which includes precision, recall, f1-score, and support, is printed to evaluate the model.
@@ -142,6 +149,8 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+![Screenshot 2025-04-29 140402](https://github.com/user-attachments/assets/70b36600-4cf7-46e0-9be9-abd288368584)
+
 
 ## 📉 Precision-Recall Curve
 
@@ -157,6 +166,8 @@ plt.title("Precision-Recall Curve")
 plt.grid(True)
 plt.show()
 ```
+![Screenshot 2025-04-29 140420](https://github.com/user-attachments/assets/8c215dcc-7fd8-4f97-9e1d-a5e172e85d11)
+
 
 ## 📌 Feature Importance (Coefficients)
 
@@ -174,6 +185,20 @@ plt.title("Feature Importance (Logistic Regression Coefficients)")
 plt.tight_layout()
 plt.show()
 ```
+![Screenshot 2025-04-29 140521](https://github.com/user-attachments/assets/3654f3a2-af0d-4bde-8499-834c3e108c0f)
+
+## 📌 Probability Distribution of Predictions
+```python
+plt.figure(figsize=(8, 5))
+sns.histplot(y_prob, bins=30, kde=True, color='orange')
+plt.axvline(x=0.5, color='red', linestyle='--', label='Default Threshold = 0.5')
+plt.xlabel('Predicted Probability (Malignant)')
+plt.title('Distribution of Predicted Probabilities')
+plt.legend()
+plt.show()
+```
+![Screenshot 2025-04-29 140535](https://github.com/user-attachments/assets/fc5a6bee-92a1-4140-a35e-26ea9c2cc51b)
+
 
 ## 🧠 Print AUC Score
 
@@ -182,6 +207,7 @@ Finally, the ROC-AUC score is printed as a measure of the model's performance.
 ```python
 print("ROC-AUC Score:", roc_auc_score(y_test, y_prob))
 ```
+![Screenshot 2025-04-29 140351](https://github.com/user-attachments/assets/09f7341f-b578-45c8-ad8d-a8793d044503)
 
 ---
 
